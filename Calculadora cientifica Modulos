@@ -1,0 +1,90 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class SumaRestaMultiplicacionNumAleotorio {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean repetir = true;
+
+        while (repetir) {
+            imprimirTitulo();
+            System.out.println("Seleccione una opción:");
+            System.out.println("1. Suma");
+            System.out.println("2. Resta");
+            System.out.println("3. Multiplicación");
+            System.out.println("4. Número Aleatorio");
+            System.out.println("5. Salir");
+
+            int opcion = scanner.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.print("Ingrese el primer número: ");
+                    double num1 = scanner.nextDouble();
+                    System.out.print("Ingrese el segundo número: ");
+                    double num2 = scanner.nextDouble();
+                    double resultadoSuma = suma(num1, num2);
+                    System.out.println("Resultado: " + resultadoSuma);
+                    break;
+                case 2:
+                    System.out.print("Ingrese el primer número: ");
+                    num1 = scanner.nextDouble();
+                    System.out.print("Ingrese el segundo número: ");
+                    num2 = scanner.nextDouble();
+                    double resultadoResta = resta(num1, num2);
+                    System.out.println("Resultado: " + resultadoResta);
+                    break;
+                case 3:
+                    System.out.print("Ingrese el primer número: ");
+                    num1 = scanner.nextDouble();
+                    System.out.print("Ingrese el segundo número: ");
+                    num2 = scanner.nextDouble();
+                    double resultadoMultiplicacion = multiplicacion(num1, num2);
+                    System.out.println("Resultado: " + resultadoMultiplicacion);
+                    break;
+                case 4:
+                    System.out.print("Ingrese el valor mínimo: ");
+                    int min = scanner.nextInt();
+                    System.out.print("Ingrese el valor máximo: ");
+                    int max = scanner.nextInt();
+                    int numeroAleatorio = numeroAleatorio(min, max);
+                    System.out.println("Número aleatorio: " + numeroAleatorio);
+                    break;
+                case 5:
+                    repetir = false;
+                    imprimirDespedida();
+                    break;
+                default:
+                    System.out.println("Opción no válida. Intente de nuevo.");
+            }
+        }
+
+        scanner.close();
+    }
+
+    public static void imprimirTitulo() {
+        System.out.println("=== Calculadora Científica ===");
+    }
+
+    public static void imprimirDespedida() {
+        System.out.println("Gracias por usar la calculadora. ¡Adiós!");
+    }
+
+    public static double suma(double num1, double num2) {
+        return num1 + num2;
+    }
+
+    public static double resta(double num1, double num2) {
+        return num1 - num2;
+    }
+
+    public static double multiplicacion(double num1, double num2) {
+        return num1 * num2;
+    }
+
+    public static int numeroAleatorio(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt((max - min) + 1) + min;
+    }
+}
